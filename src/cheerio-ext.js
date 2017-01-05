@@ -1,4 +1,5 @@
-import { cheerio, domSerializer as serialize } from '../dist/vendor'
+import cheerio from 'cheerio'
+import serialize from 'dom-serializer'
 
 let $ = null
 

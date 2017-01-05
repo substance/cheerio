@@ -1,10 +1,11 @@
 {
   "name": "substance-cheerio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Custom cheerio bundle for substance.",
-  "main": "dist/cheerio.js",
+  "main": "dist/cheerio.cjs.js",
+  "jsnext:main": "dist/cheerio.es.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/rollup -c"
   },
   "author": {
     "name": "Oliver Buchtala",
@@ -13,11 +14,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^13.1.0",
-    "substance-bundler": "0.4.12",
-    "uglify-js": "^2.7.3",
     "cheerio": "0.20.0",
-    "dom-serializer": "0.1.0"
+    "dom-serializer": "0.1.0",
+    "rollup": "^0.40.0",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
   },
   "files": [
     "dist",
