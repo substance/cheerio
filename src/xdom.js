@@ -28,3 +28,11 @@ export function parseHTML(html) {
 export function parseXML(xml) {
   return XNode.parseMarkup(xml, { format: 'xml' })
 }
+
+export function createTextNode(text, options) {
+  return XNode.createTextNode(text, options)
+}
+
+export function createElement(tagName, options) {
+  return XNode.createElement(tagName, options)
+}
