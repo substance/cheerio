@@ -1,6 +1,6 @@
-# substance-cheerio
+# substance-xdom
 
-A light-weight DOM implementation build on top of [htmlparser2](https://github.com/fb55/htmlparser2)
+A light-weight DOM implementation build on top of [htmlparser2](https://github.com/fb55/htmlparser2).
 
 > TODO: as this not related to cheerio anymore we should rename the project.
 
