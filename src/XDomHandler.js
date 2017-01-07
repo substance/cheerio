@@ -3,6 +3,9 @@ import XNode from './XNode'
 
 const re_whitespace = /\s+/g
 
+/*
+  Customized implementation of [DomHandler](https://github.com/fb55/domhandler).
+*/
 class XDomHandler {
 
   constructor() {
@@ -13,17 +16,18 @@ class XDomHandler {
     this._tagStack = []
 
     this._parser = null
+    this._doc = null
   }
 
+  // called directly after construction of Parser and at the end of Parser.reset()
   onparserinit(parser){
     this._parser = parser
-  }
-
-  //Resets the handler back to starting state
-  onreset(){
     this.dom = []
     this._done = false
     this._tagStack = []
+    this._doc = new XNode('document', {
+      format: parser._options.xmlMode ? 'xml' : 'html'
+    })
   }
 
   //Signals the handler that parsing is done
@@ -66,7 +70,7 @@ class XDomHandler {
   }
 
   onopentag(name, attribs) {
-    let element = new XNode(ElementType.Tag, { name: name, attribs: attribs })
+    let element = new XNode(ElementType.Tag, { name: name, attribs: attribs, ownerDocument: this._doc })
     this._addDomElement(element)
     this._tagStack.push(element)
   }
@@ -85,7 +89,7 @@ class XDomHandler {
     if (lastTag && lastTag.type === ElementType.Text) {
       lastTag.data += text
     } else {
-      let element = new XNode(ElementType.Text, { data: text })
+      let element = new XNode(ElementType.Text, { data: text, ownerDocument: this._doc })
       this._addDomElement(element)
     }
   }
@@ -95,7 +99,7 @@ class XDomHandler {
     if(lastTag && lastTag.type === ElementType.Comment){
       lastTag.data += data
     } else {
-      let element = new XNode(ElementType.Comment, { data: data })
+      let element = new XNode(ElementType.Comment, { data: data, ownerDocument: this._doc })
       this._addDomElement(element)
       this._tagStack.push(element)
     }
@@ -107,7 +111,8 @@ class XDomHandler {
 
   oncdatastart() {
     let element = new XNode(ElementType.CDATA, {
-      children: [ new XNode(ElementType.Text, { data: "" }) ]
+      children: [ new XNode(ElementType.Text, { data: "", ownerDocument: this._doc }) ],
+      ownerDocument: this._doc
     })
     this._addDomElement(element)
     this._tagStack.push(element)
@@ -120,7 +125,8 @@ class XDomHandler {
   onprocessinginstruction(name, data) {
     let element = new XNode(ElementType.Directive, {
       name: name,
-      data: data
+      data: data,
+      ownerDocument: this._doc
     })
     this._addDomElement(element)
   }
