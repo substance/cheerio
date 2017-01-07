@@ -1,0 +1,1 @@
+export default { /* stub inserted by bundler */ }

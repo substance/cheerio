@@ -1,6 +1,6 @@
 {
   "name": "substance-cheerio",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Custom cheerio bundle for substance.",
   "main": "dist/cheerio.cjs.js",
   "jsnext:main": "dist/cheerio.es.js",
@@ -14,12 +14,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "cheerio": "0.20.0",
-    "dom-serializer": "0.1.0",
-    "rollup": "^0.40.0",
-    "rollup-plugin-commonjs": "^7.0.0",
-    "rollup-plugin-json": "^2.1.0",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "css-select": "^1.2.0",
+    "domutils": "^1.5.1",
+    "entities": "^1.1.1",
+    "htmlparser2": "^3.9.2",
+    "substance-bundler": "^0.6.5"
   },
   "files": [
     "dist",
