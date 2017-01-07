@@ -1,11 +1,15 @@
 # substance-cheerio
 
-A customized and pre-bundled version of [cheerio](https://github.com/cheeriojs/cheerio).
+A light-weight DOM implementation build on top of [htmlparser2](https://github.com/fb55/htmlparser2)
+
+> TODO: as this not related to cheerio anymore we should rename the project.
 
 Example:
 
 ```
-var $ = require('substance-cheerio')
-var $el = $('<div>').addClass('foo').attr('data-id', 'foo')
-$el.append($('<span>').text('blupp'))
+import { parseHTML } from 'substance-cheerio'
+let elements = parseHTML('<p>Hello <b>World</b>!</p>')
+let p = elements[0]
+let b = p.find('b')
+console.log(b.getTextContent())
 ```
