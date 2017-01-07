@@ -1,6 +1,6 @@
 {
   "name": "substance-xdom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Light-weight DOM implementation for Substance.",
   "main": "dist/xdom.cjs.js",
   "jsnext:main": "dist/xdom.es.js",
