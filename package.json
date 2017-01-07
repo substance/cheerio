@@ -1,7 +1,7 @@
 {
-  "name": "substance-cheerio",
-  "version": "0.2.0",
-  "description": "Custom cheerio bundle for substance.",
+  "name": "substance-xdom",
+  "version": "0.1.0",
+  "description": "Light-weight DOM implementation for Substance.",
   "main": "dist/xdom.cjs.js",
   "jsnext:main": "dist/xdom.es.js",
   "scripts": {
